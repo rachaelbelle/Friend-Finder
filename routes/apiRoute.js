@@ -11,7 +11,7 @@ module.exports = function(app) {
   // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
   // ---------------------------------------------------------------------------
 
-  app.get("/api/Route", function(req, res) {
+  app.get("/api/friends", function(req, res) {
     res.json(friendData);
   });
 
@@ -21,11 +21,8 @@ module.exports = function(app) {
   // });
   // };
 
-  app.post("/api/clear", function(req, res) {
-    // Empty out the arrays of data
-    friendData.length = 0;
-    // waitListData.length = 0;
-
-    res.json({ ok: true });
-  });
+  // app.post("/api/clear", function(req, res) {
+  //   friendData.length = 0;
+  //   res.json({ ok: true });
+  // });
 };
