@@ -19,16 +19,16 @@ var friendArray = [
   "name": "Rachael Hutchens",
   "photo": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/525593_10151100042667388_1218857598_n.jpg?_nc_cat=102&_nc_ht=scontent-lga3-1.xx&oh=196fe3f5636e1875dffe3707be27a0d1&oe=5D6BFCAB",
   "scores": [
-  "3",
-  "2",
-  "2",
-  "2",
-  "4",
-  "1",
-  "4",
-  "1",
-  "3",
-  "1"
+  "5",
+  "5",
+  "5",
+  "5",
+  "5",
+  "5",
+  "5",
+  "5",
+  "5",
+  "5"
   ]
   }
 ];
