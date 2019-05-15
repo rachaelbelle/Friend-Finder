@@ -8,15 +8,21 @@
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
   <style>
     .btn-primary {
       background-color: #337ab7;
       border-color: #2e6da4;
     }
-    h2, {
+
+    h2 {
       line-height: 150%;
     }
-    .submit, h3{
+
+    #submit,
+    h3 {
       margin-top: 20px;
     }
   </style>
@@ -24,30 +30,6 @@
 </head>
 
 <body>
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Best Match</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
 
   <div class="container">
     <h2>Survey Questions</h2>
@@ -56,11 +38,11 @@
     <form role="form">
       <div class="form-group">
         <label for="friend-name">Name (Required)</label>
-        <input type="text" class="form-control" id="reserve-name">
+        <input type="text" class="form-control" id="name">
       </div>
       <div class="form-group">
         <label for="saved-image">Link to photo image (Required)</label>
-        <input type="text" class="form-control" id="reserve-phone">
+        <input type="text" class="form-control" id="photo">
       </div>
 
 
@@ -181,11 +163,10 @@
 
 
       <div>
-        <button type="button" class="btn btn-lg btn-primary btn-block submit" data-toggle="modal"
-          data-target="#exampleModal"><span class="fa fa-check-circle"></span> Submit</button>
+        <button type="submit" class="btn btn-lg btn-primary btn-block" id="submit"><span class="fa fa-check-circle"></span> Submit</button>
       </div>
-
-
+      <!-- data-toggle="modal"
+      data-target="#exampleModal" -->
 
   </div>
 
@@ -198,70 +179,76 @@
 
   </div>
 
+        <!-- Modal -->
+        <div id="results-modal exampleModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Best Match</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h2 id="match-name"></h2>
+              <img id="match-img" src="#" alt="">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
 
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </html>
 
+
+
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
 <script type="text/javascript">
-  // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
-  // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
-  // Our api recognizes the route (/api/friends)... and then runs the associated code (found in api-routes.js).
-  // In this case the associated code "saves" the data to the friends.js file
+  console.log("page is loaded")
 
-  $(".submit").on("click", function(event) {
+ $("#submit").on("click", function(event) {
     event.preventDefault();
+
+    console.log("I am the CONSOLE!")
+
 
     // Here we grab the form elements
     var newFriend = {
       name: $("#name").val().trim(),
       photo: $("#photo").val().trim(),
       scores: [
-      $("#q1").val().trim(),
-      $("#q2").val().trim(),
-      $("#q3").val().trim(),
-      $("#q4").val().trim(),
-      $("#q5").val().trim(),
-      $("#q6").val().trim(),
-      $("#q7").val().trim(),
-      $("#q8").val().trim(),
-      $("#q9").val().trim(),
-      $("#q10").val().trim()
+        $("#q1").val().trim(),
+        $("#q2").val().trim(),
+        $("#q3").val().trim(),
+        $("#q4").val().trim(),
+        $("#q5").val().trim(),
+        $("#q6").val().trim(),
+        $("#q7").val().trim(),
+        $("#q8").val().trim(),
+        $("#q9").val().trim(),
+        $("#q10").val().trim()
       ]
     };
 
-    console.log(newFriend);
+    console.log("This is the:" + newFriend);
 
-    // This line is the magic. It"s very similar to the standard ajax function we used.
-    // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
-    // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
 
-    $.post("/api/friends", newFriend,
-      function(data) {
+    $.post("/api/friends", newFriend, function (data) {
 
-        // // If a table is available... tell user they are booked.
-        // if (data) {
-        //   alert("Yay! You are officially booked!");
-        // }
+      $("#match-name").text(data.name);
+      $("#match-img").attr("src", data.photo);
+      $("#results-modal").modal("toggle");
 
-        // // If a table is available... tell user they on the waiting list.
-        // else {
-        //   alert("Sorry you are on the wait list");
-        // }
-
-        // Clear the form when submitting
-        $("#name").val("");
-        $("#photo").val("");
-        $("#q1").val("");
-        $("#q2").val("");
-
-      });
-
+    });
   });
+</script>
