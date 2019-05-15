@@ -185,6 +185,8 @@
           data-target="#exampleModal"><span class="fa fa-check-circle"></span> Submit</button>
       </div>
 
+
+
   </div>
 
   <footer class="footer">
@@ -206,3 +208,60 @@
   integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </html>
+
+<!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
+<script type="text/javascript">
+  // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
+  // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
+  // Our api recognizes the route (/api/friends)... and then runs the associated code (found in api-routes.js).
+  // In this case the associated code "saves" the data to the friends.js file
+
+  $(".submit").on("click", function(event) {
+    event.preventDefault();
+
+    // Here we grab the form elements
+    var newFriend = {
+      name: $("#name").val().trim(),
+      photo: $("#photo").val().trim(),
+      scores: [
+      $("#q1").val().trim(),
+      $("#q2").val().trim(),
+      $("#q3").val().trim(),
+      $("#q4").val().trim(),
+      $("#q5").val().trim(),
+      $("#q6").val().trim(),
+      $("#q7").val().trim(),
+      $("#q8").val().trim(),
+      $("#q9").val().trim(),
+      $("#q10").val().trim()
+      ]
+    };
+
+    console.log(newFriend);
+
+    // This line is the magic. It"s very similar to the standard ajax function we used.
+    // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+    // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+
+    $.post("/api/friends", newFriend,
+      function(data) {
+
+        // // If a table is available... tell user they are booked.
+        // if (data) {
+        //   alert("Yay! You are officially booked!");
+        // }
+
+        // // If a table is available... tell user they on the waiting list.
+        // else {
+        //   alert("Sorry you are on the wait list");
+        // }
+
+        // Clear the form when submitting
+        $("#name").val("");
+        $("#photo").val("");
+        $("#q1").val("");
+        $("#q2").val("");
+
+      });
+
+  });
