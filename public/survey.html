@@ -159,14 +159,10 @@
         <option value="5">5 (Strongly Agree)</option>
       </select>
 
-
-
-
-      <div>
-        <button type="submit" class="btn btn-lg btn-primary btn-block" id="submit"><span class="fa fa-check-circle"></span> Submit</button>
-      </div>
-      <!-- data-toggle="modal"
-      data-target="#exampleModal" -->
+      <button type="button" class="btn btn-primary btn-lg btn-block" id="submit" data-toggle="modal"
+        data-target="#exampleModal"><i class="fa fa-check-circle" aria-hidden="true"></i>
+        Submit
+      </button>
 
   </div>
 
@@ -177,69 +173,64 @@
     </div>
   </footer>
 
-  </div>
 
-        <!-- Modal -->
-        <div id="results-modal exampleModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Best Match</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <h2 id="match-name"></h2>
-              <img id="match-img" src="#" alt="">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-            </div>
-          </div>
+  <!-- id="exampleModal" -->
+
+  <div id="exampleModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Best Match</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="position: fixed; width: 400px; height: 400px;  z-index: -9999;"></div>
+          <h2 id="match-name"></h2>
+          <img id="match-img" src="#" alt="">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
-
-
-
-
+    </div>
+  </div>
 </body>
 
 </html>
 
-
-
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS SENT TO OUR SERVER -->
+
 <script type="text/javascript">
 
-$("#submit").on("click", function (event) {
-      event.preventDefault();
-      console.log("I am the CONSOLE!")
+  $("#submit").on("click", function (event) {
+    event.preventDefault();
+    // console.log("I am the CONSOLE!")
 
-      function validateForm() {
-        var isValid = true;
-        $(".form-control").each(function () {
-          if ($(this).val() === "") {
-            isValid = false;
-          }
-        });
+    function validateForm() {
+      var isValid = true;
+      $(".form-control").each(function () {
+        if ($(this).val() === "") {
+          isValid = false;
+        }
+      });
 
-        $("select").each(function () {
+      $("select").each(function () {
 
-          if ($(this).val() === "") {
-            isValid = false;
-          }
-        });
-        return isValid;
-      }
+        if ($(this).val() === "") {
+          isValid = false;
+        }
+      });
+      return isValid;
+    }
 
-      if (validateForm()) {
-       // Here we grab the form elements
+    if (validateForm()) {
+      // Here we grab the form elements
 
-        var newFriend = {
+      var newFriend = {
         name: $("#name").val().trim(),
         photo: $("#photo").val().trim(),
         scores: [
@@ -254,21 +245,28 @@ $("#submit").on("click", function (event) {
           $("#q9").val().trim(),
           $("#q10").val().trim()
         ]
-       };
+      };
+      // console.log("info in: " + newFriend)
 
-        // AJAX post the data to the friends API.
-        $.post("/api/friends", newFriend, function (data) {
+      $.post("/api/friends", newFriend, function (data) {
 
-          $("#match-name").text(data.name);
-          $("#match-img").attr("src", data.photo);
-          $("#results-modal").modal("toggle");
+        $("#match-name").text(data.name);
+        $("#match-img").attr("src", data.photo);
 
-        });
-      } else {
-        alert("Please fill out all fields before submitting!");
-      }
-    });
-  console.log("page is loaded")
+        console.log("photo" + data.photo)
 
+        $("#exampleModal").modal("toggle");
+        console.log("this is what " +  JSON.stringify($("#exampleModal").modal("toggle")))
+
+        // console.log("this is the" + data.name)
+
+      });
+    } else {
+      alert("Please fill out all fields before submitting!");
+    };
+
+    console.log("page is loaded")
+
+  });
 
 </script>
