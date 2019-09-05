@@ -17,7 +17,7 @@ var friendArray = [
    ]
 },{
   "name": "Rachael Hutchens",
-  "photo": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/525593_10151100042667388_1218857598_n.jpg?_nc_cat=102&_nc_ht=scontent-lga3-1.xx&oh=196fe3f5636e1875dffe3707be27a0d1&oe=5D6BFCAB",
+  "photo": "https://drive.google.com/file/d/1nGH4BTjCtkd54aleHsumWx3Ret9C6Gn7/view?usp=sharing",
   "scores": [
   "5",
   "5",
@@ -62,7 +62,7 @@ var friendArray = [
     ]
     },{
 "name": "Pedro Martinez",
-"photo": "https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/60586439_10158385807307388_2699322662760480768_o.jpg?_nc_cat=105&_nc_ht=scontent-lax3-1.xx&oh=531ace9dd2715b65eab0172424746faf&oe=5D5B8A08",
+"photo": "https://drive.google.com/file/d/1eNZb0MnHwCmaJd6wygKBpqd9tbL49XAi/view?usp=sharing",
 "scores": [
 "3",
 "2",
