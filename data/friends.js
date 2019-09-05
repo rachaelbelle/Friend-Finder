@@ -60,7 +60,22 @@ var friendArray = [
     "1",
     "5"
     ]
-    },
+    },{
+"name": "Pedro Martinez",
+"photo": "https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/60586439_10158385807307388_2699322662760480768_o.jpg?_nc_cat=105&_nc_ht=scontent-lax3-1.xx&oh=531ace9dd2715b65eab0172424746faf&oe=5D5B8A08",
+"scores": [
+"3",
+"2",
+"4",
+"5",
+"5",
+"1",
+"5",
+"3",
+"4",
+"4"
+]
+}
 ];
 // Note how we export the array. This makes it accessible to other files using require.
 module.exports = friendArray;
