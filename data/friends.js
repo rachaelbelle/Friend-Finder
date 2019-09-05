@@ -32,7 +32,7 @@ var friendArray = [
   ]
   },{
     "name": "Yvel Saint Laurent",
-    "photo": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/53541008_10158183885362388_7471704397236404224_o.jpg?_nc_cat=106&_nc_ht=scontent-lga3-1.xx&oh=9c8d1d385d6aec7164c12f7fc9a1f7f4&oe=5D561C81",
+    "photo": "https://drive.google.com/file/d/1ftTRFyNDUnV-T2lsxE4VGth5F3QIyfO7/view?usp=sharing",
     "scores": [
     "4",
     "3",
