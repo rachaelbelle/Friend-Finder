@@ -13,3 +13,17 @@ You can find a the app located here:  https://friend-finder-ysl.herokuapp.com/
 👾 Rachael
 
 **message me if we match 😉
+
+###
+
+<kbd>
+  <img src="public/Welcome.png"/>
+</kbd>
+
+###
+
+Enter your Name and a link to a photo!  Then choose from the dropdown menus: 1 to 5 as to how much you agree with the questions.
+
+<kbd>
+  <img src="public/NamePhoto.png"/>
+</kbd>
